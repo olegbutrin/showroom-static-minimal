@@ -1,0 +1,41 @@
+$main: 15px;
+$nav: 14px;
+$section: 85px;
+
+$primary: #000000;
+$secondary: #7e143c;
+
+$dark: #0b1f3c;
+$darkest: #040f1f;
+
+$bp1400: 1400px;
+$bp860: 860px;
+$bp460: 460px;
+
+@mixin breakpoint ($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin flex ($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin transition ($duraton) {
+  transition: top $duraton;
+  -webkit-transition: $duraton;
+}
+
+@mixin icon ($svg, $invert) {
+  background-image: url("../assets/icons/" + $svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @if $invert {
+    filter: invert(.75);
+    -webkit-filter: invert(.75);
+  }
+}
+

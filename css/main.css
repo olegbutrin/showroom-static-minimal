@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&display=swap");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0; }
+
+a {
+  text-decoration: none; }
+
+.wrapper {
+  height: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 100px;
+  padding-right: 100px; }
+  @media (max-width: 860px) {
+    .wrapper {
+      padding-left: 26px;
+      padding-right: 26px; } }
+
+#content {
+  width: 100%; }
+
+.page {
+  width: 100%; }
+
+.section-header {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 85px;
+  line-height: 100%;
+  color: #7e143c; }
+
+.nav-group {
+  display: grid;
+  grid-template-columns: 1fr 135px 1fr;
+  grid-template-rows: 1fr 1px 1fr;
+  grid-template-areas: "NL  LOGO  NI" "LL  LOGO  RL" "LE  LOGO  RE";
+  padding-top: 26px; }
+  @media (max-width: 860px) {
+    .nav-group {
+      grid-template-rows: 1fr 1fr 135px;
+      grid-template-areas: "NI   NI   NI" "NL   NL   NL" "LL  LOGO  RL"; } }
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  grid-area: NL; }
+  @media (max-width: 860px) {
+    .nav-links {
+      justify-content: center;
+      margin-bottom: 20px; } }
+
+.nav-link {
+  font-size: 14px;
+  line-height: 100%;
+  color: #000000; }
+
+.nav-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  grid-area: NI; }
+  @media (max-width: 860px) {
+    .nav-icons {
+      justify-content: center;
+      margin-bottom: 20px; } }
+
+.nav-icon {
+  width: 24px;
+  height: 24px; }
+  .nav-icon.phone {
+    background-image: url("../assets/icons/phone.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .nav-icon.mail {
+    background-image: url("../assets/icons/mail.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .nav-icon.location {
+    background-image: url("../assets/icons/location.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+  .nav-icon.instagram {
+    background-image: url("../assets/icons/instagram.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; }
+
+.nav-logo {
+  width: 135px;
+  height: 135px;
+  background-image: url("../assets/icons/logo.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  grid-area: LOGO; }
+
+.nav-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin-top: auto;
+  margin-bottom: auto; }
+  .nav-line.left {
+    grid-area: LL; }
+  .nav-line.right {
+    grid-area: RL; }
+
+.nav-empty {
+  width: 100%; }
+  .nav-empty.left {
+    grid-area: LE; }
+  .nav-empty.right {
+    grid-area: RE; }

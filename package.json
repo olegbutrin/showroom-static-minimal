@@ -1,0 +1,12 @@
+{
+  "name": "showroom-static-minimal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "scss": "node-sass -w scss/main.scss -o css/"
+  },
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
