@@ -63,6 +63,8 @@ a {
   }
 }
 
+// NAVIGATION
+
 .nav-group {
   display: grid;
   grid-template-columns: (1fr 135px 1fr);
@@ -164,12 +166,21 @@ a {
   }
 }
 
+// CATALOG
+
 .catalog-group {
   display: grid;
   gap: 20px;
-  grid-template-columns: ( minmax(390px, auto) minmax(360px, auto) minmax(390px, auto));
-  grid-template-areas:
-  "LI MENU RI";
+  grid-template-columns: (
+    minmax(390px, auto) minmax(360px, auto) minmax(390px, auto)
+  );
+  grid-template-areas: "LI MENU RI";
+
+  @include breakpoint($bp1400) {
+    grid-template-columns: (
+      minmax(335px, auto) minmax(360px, auto) minmax(335px, auto)
+    );
+  }
 
   @include breakpoint($bp1360) {
     grid-template-columns: (1fr 1fr);
@@ -182,7 +193,7 @@ a {
     grid-template-columns: (1fr);
     grid-template-areas:
       "MENU"
-      " LI " 
+      " LI "
       " RI ";
   }
 }
@@ -199,13 +210,6 @@ a {
   &.right {
     grid-area: RI;
     justify-content: flex-end;
-
-  }
-
-  @include breakpoint($bp1360) {
-    &.right {
-      justify-content: flex-start;
-    }
   }
 
   @include breakpoint($bp460) {
@@ -217,11 +221,11 @@ a {
   @include flex(row);
   position: relative;
   animation-name: fadein, bubble;
-	animation-fill-mode: both;
+  animation-fill-mode: both;
   animation-delay: 200ms;
-	animation-duration: 600ms;
+  animation-duration: 600ms;
   align-items: stretch;
-  height: 80vmin;
+  height: 100%;
 }
 
 .catalog-image {
@@ -230,6 +234,7 @@ a {
   height: 100%;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: top;
   @each $cat in $catnames {
     &[data-menu="#{$cat}"] {
       &.first {
@@ -239,6 +244,10 @@ a {
       &.second {
         background-image: url("../assets/images/#{$cat}_2.jpg");
         background-position: bottom;
+
+        @include breakpoint($bp1360) {
+          background-position: top;
+        }
       }
     }
   }
@@ -280,4 +289,91 @@ a {
       padding: 0px 10px;
     }
   }
+}
+
+// STYLES
+
+.styles-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 80px;
+  grid-template-areas:
+    "HA EA"
+    "LS RS";
+
+  .section-header {
+    grid-area: HA;
+  }
+
+  @include breakpoint($bp860) {
+    grid-template-columns: (1fr);
+    grid-template-areas:
+      "HA"
+      "RS"
+      "LS";
+  }
+}
+
+.styles-image-holder {
+  @include flex(row);
+  position: relative;
+  animation-name: fadein, bubble;
+  animation-fill-mode: both;
+  animation-delay: 200ms;
+  animation-duration: 600ms;
+  align-items: stretch;
+  height: 100%;
+  max-width: 335px;
+  margin-right: 20px;
+  grid-area: LS;
+}
+
+.styles-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  @each $cat in $catnames {
+    &[data-menu="#{$cat}"] {
+      background-image: url("../assets/images/#{$cat}_1.jpg");
+      background-position: top;
+    }
+  }
+}
+
+.styles-menu-block {
+  @include flex(column);
+  gap: 0;
+  grid-area: RS;
+}
+
+.styles-menu-item {
+  font-family: "Cormorant Garamond", serif;
+  font-size: $menu;
+  font-weight: 400;
+  line-height: 120%;
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid $gray;
+  position: relative;
+
+  &:after {
+    content: url("../assets/icons/vector.svg");
+    color: $gray;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+}
+
+// COLLECTIONS
+
+// PERSONAL
+
+.personal-list-wrapper {
+  background-color: $dark;
 }

@@ -161,6 +161,9 @@ a {
   gap: 20px;
   grid-template-columns: minmax(390px, auto) minmax(360px, auto) minmax(390px, auto);
   grid-template-areas: "LI MENU RI"; }
+  @media (max-width: 1400px) {
+    .catalog-group {
+      grid-template-columns: minmax(335px, auto) minmax(360px, auto) minmax(335px, auto); } }
   @media (max-width: 1360px) {
     .catalog-group {
       grid-template-columns: 1fr 1fr;
@@ -168,7 +171,7 @@ a {
   @media (max-width: 860px) {
     .catalog-group {
       grid-template-columns: 1fr;
-      grid-template-areas: "MENU" " LI "  " RI "; } }
+      grid-template-areas: "MENU" " LI " " RI "; } }
 
 .catalog-image-block {
   display: flex;
@@ -182,9 +185,6 @@ a {
   .catalog-image-block.right {
     grid-area: RI;
     justify-content: flex-end; }
-  @media (max-width: 1360px) {
-    .catalog-image-block.right {
-      justify-content: flex-start; } }
   @media (max-width: 460px) {
     .catalog-image-block {
       height: 80vmin; } }
@@ -198,56 +198,78 @@ a {
   animation-delay: 200ms;
   animation-duration: 600ms;
   align-items: stretch;
-  height: 80vmin; }
+  height: 100%; }
 
 .catalog-image {
   display: block;
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
-  background-size: contain; }
+  background-size: contain;
+  background-position: top; }
   .catalog-image[data-menu="bed"].first {
     background-image: url("../assets/images/bed_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="bed"].second {
     background-image: url("../assets/images/bed_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="bed"].second {
+        background-position: top; } }
   .catalog-image[data-menu="bedroom"].first {
     background-image: url("../assets/images/bedroom_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="bedroom"].second {
     background-image: url("../assets/images/bedroom_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="bedroom"].second {
+        background-position: top; } }
   .catalog-image[data-menu="childroom"].first {
     background-image: url("../assets/images/childroom_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="childroom"].second {
     background-image: url("../assets/images/childroom_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="childroom"].second {
+        background-position: top; } }
   .catalog-image[data-menu="hallway"].first {
     background-image: url("../assets/images/hallway_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="hallway"].second {
     background-image: url("../assets/images/hallway_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="hallway"].second {
+        background-position: top; } }
   .catalog-image[data-menu="kitchen"].first {
     background-image: url("../assets/images/kitchen_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="kitchen"].second {
     background-image: url("../assets/images/kitchen_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="kitchen"].second {
+        background-position: top; } }
   .catalog-image[data-menu="livingroom"].first {
     background-image: url("../assets/images/livingroom_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="livingroom"].second {
     background-image: url("../assets/images/livingroom_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="livingroom"].second {
+        background-position: top; } }
   .catalog-image[data-menu="sofa"].first {
     background-image: url("../assets/images/sofa_1.jpg");
     background-position: top; }
   .catalog-image[data-menu="sofa"].second {
     background-image: url("../assets/images/sofa_2.jpg");
     background-position: bottom; }
+    @media (max-width: 1360px) {
+      .catalog-image[data-menu="sofa"].second {
+        background-position: top; } }
 
 .catalog-text-block {
   display: flex;
@@ -279,3 +301,85 @@ a {
     color: #c1c1c1;
     display: inline-block;
     padding: 0px 10px; }
+
+.styles-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 80px;
+  grid-template-areas: "HA EA" "LS RS"; }
+  .styles-group .section-header {
+    grid-area: HA; }
+  @media (max-width: 860px) {
+    .styles-group {
+      grid-template-columns: 1fr;
+      grid-template-areas: "HA" "RS" "LS"; } }
+
+.styles-image-holder {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  animation-name: fadein, bubble;
+  animation-fill-mode: both;
+  animation-delay: 200ms;
+  animation-duration: 600ms;
+  align-items: stretch;
+  height: 100%;
+  max-width: 335px;
+  margin-right: 20px;
+  grid-area: LS; }
+
+.styles-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top; }
+  .styles-image[data-menu="bed"] {
+    background-image: url("../assets/images/bed_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="bedroom"] {
+    background-image: url("../assets/images/bedroom_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="childroom"] {
+    background-image: url("../assets/images/childroom_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="hallway"] {
+    background-image: url("../assets/images/hallway_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="kitchen"] {
+    background-image: url("../assets/images/kitchen_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="livingroom"] {
+    background-image: url("../assets/images/livingroom_1.jpg");
+    background-position: top; }
+  .styles-image[data-menu="sofa"] {
+    background-image: url("../assets/images/sofa_1.jpg");
+    background-position: top; }
+
+.styles-menu-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  grid-area: RS; }
+
+.styles-menu-item {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 120%;
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid #c1c1c1;
+  position: relative; }
+  .styles-menu-item:after {
+    content: url("../assets/icons/vector.svg");
+    color: #c1c1c1;
+    display: inline-block;
+    position: absolute;
+    right: 0; }
+
+.personal-list-wrapper {
+  background-color: #0b1f3c; }
