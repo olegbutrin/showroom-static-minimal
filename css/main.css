@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&display=swap");
+@keyframes fadein {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes bubble {
+  0% {
+    top: 50%; }
+  100% {
+    top: 0%; } }
+
 html,
 body {
   margin: 0;
@@ -37,7 +49,9 @@ a {
   width: 100%; }
 
 .page {
-  width: 100%; }
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 220px; }
 
 .section-header {
   font-family: "Cormorant Garamond", serif;
@@ -45,6 +59,8 @@ a {
   font-size: 85px;
   line-height: 100%;
   color: #7e143c; }
+  .section-header.center {
+    text-align: center; }
 
 .nav-group {
   display: grid;
@@ -139,3 +155,127 @@ a {
     grid-area: LE; }
   .nav-empty.right {
     grid-area: RE; }
+
+.catalog-group {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(390px, auto) minmax(360px, auto) minmax(390px, auto);
+  grid-template-areas: "LI MENU RI"; }
+  @media (max-width: 1360px) {
+    .catalog-group {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "MENU MENU" "LI     RI"; } }
+  @media (max-width: 860px) {
+    .catalog-group {
+      grid-template-columns: 1fr;
+      grid-template-areas: "MENU" " LI "  " RI "; } }
+
+.catalog-image-block {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 440px;
+  min-width: 200px; }
+  .catalog-image-block.left {
+    grid-area: LI;
+    justify-content: flex-start; }
+  .catalog-image-block.right {
+    grid-area: RI;
+    justify-content: flex-end; }
+  @media (max-width: 1360px) {
+    .catalog-image-block.right {
+      justify-content: flex-start; } }
+  @media (max-width: 460px) {
+    .catalog-image-block {
+      height: 80vmin; } }
+
+.catalog-image-holder {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  animation-name: fadein, bubble;
+  animation-fill-mode: both;
+  animation-delay: 200ms;
+  animation-duration: 600ms;
+  align-items: stretch;
+  height: 80vmin; }
+
+.catalog-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain; }
+  .catalog-image[data-menu="bed"].first {
+    background-image: url("../assets/images/bed_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="bed"].second {
+    background-image: url("../assets/images/bed_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="bedroom"].first {
+    background-image: url("../assets/images/bedroom_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="bedroom"].second {
+    background-image: url("../assets/images/bedroom_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="childroom"].first {
+    background-image: url("../assets/images/childroom_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="childroom"].second {
+    background-image: url("../assets/images/childroom_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="hallway"].first {
+    background-image: url("../assets/images/hallway_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="hallway"].second {
+    background-image: url("../assets/images/hallway_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="kitchen"].first {
+    background-image: url("../assets/images/kitchen_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="kitchen"].second {
+    background-image: url("../assets/images/kitchen_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="livingroom"].first {
+    background-image: url("../assets/images/livingroom_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="livingroom"].second {
+    background-image: url("../assets/images/livingroom_2.jpg");
+    background-position: bottom; }
+  .catalog-image[data-menu="sofa"].first {
+    background-image: url("../assets/images/sofa_1.jpg");
+    background-position: top; }
+  .catalog-image[data-menu="sofa"].second {
+    background-image: url("../assets/images/sofa_2.jpg");
+    background-position: bottom; }
+
+.catalog-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  grid-area: MENU; }
+
+.catalog-menu-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; }
+
+.catalog-menu-item {
+  font-size: 38px;
+  line-height: 150%;
+  font-weight: 300;
+  color: #000000;
+  text-decoration: none;
+  text-underline-offset: 10px; }
+  .catalog-menu-item.active {
+    color: #7e143c;
+    text-decoration: underline; }
+  .catalog-menu-item:not(:first-child):before {
+    content: "/";
+    color: #c1c1c1;
+    display: inline-block;
+    padding: 0px 10px; }

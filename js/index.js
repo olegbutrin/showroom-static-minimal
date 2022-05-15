@@ -1,31 +1,21 @@
-const _containerID = "#content";
-const _pageClass = ".page";
-
-let screen, container, pages, doScroll;
-
-const pageScroller = (e) => {
-  const delta = e.originalEvent.deltaY;
-  container.css("top", -screen * 100 + "%");
-  let activePage = $(pages[screen]);
-  if (!!activePage && !doScroll) {
-    doScroll = true;
-    if (delta > 0 && screen < pages.length - 1) {
-      screen++;
-    }
-    if (delta < 0 && screen > 0) {
-      screen--;
-    }
-		setTimeout(() => {
-			doScroll = false;
-		}, 2200);
-  }
-};
-
 $(() => {
-  screen = 0;
-  doScroll = false;
-  container = $(_containerID);
-  pages = $(_pageClass);
+  // catalog menu callback
+  $(".catalog-menu-item").on("click", (e) => {
+    const $item = $(e.target);
+    const menu = $item.attr("data-menu");
+    console.log(`Set menu: "${menu}"`);
 
-  // $("body").on("mousewheel", pageScroller);
+    $(".catalog-menu-item.active").removeClass("active");
+    $item.addClass("active");
+
+    $(".catalog-image").each((i, img) => {
+      $(img).attr("data-menu", menu);
+    });
+
+    $(".catalog-image-holder").each((i, holder) => {
+      holder.style.animation = "none";
+      holder.offsetHeight; /* trigger reflow */
+      holder.style.animation = null;
+    });
+  });
 });

@@ -39,22 +39,16 @@ a {
     padding-left: 26px;
     padding-right: 26px;
   }
-  // overflow: hidden;
 }
 
 #content {
   width: 100%;
-  // height: 100%;
-  // position: relative;
-  // top: 0%;
-  // @include transition(2s);
 }
 
 .page {
   width: 100%;
-  // width: 100vw;
-  // height: 100vh;
-  // transition: all 400ms linear;
+  margin-top: 80px;
+  margin-bottom: 220px;
 }
 
 .section-header {
@@ -63,6 +57,10 @@ a {
   font-size: $section;
   line-height: 100%;
   color: $secondary;
+
+  &.center {
+    text-align: center;
+  }
 }
 
 .nav-group {
@@ -82,7 +80,6 @@ a {
       "NL   NL   NL"
       "LL  LOGO  RL";
   }
-
 }
 
 .nav-links {
@@ -164,5 +161,123 @@ a {
   }
   &.right {
     grid-area: RE;
+  }
+}
+
+.catalog-group {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: ( minmax(390px, auto) minmax(360px, auto) minmax(390px, auto));
+  grid-template-areas:
+  "LI MENU RI";
+
+  @include breakpoint($bp1360) {
+    grid-template-columns: (1fr 1fr);
+    grid-template-areas:
+      "MENU MENU"
+      "LI     RI";
+  }
+
+  @include breakpoint($bp860) {
+    grid-template-columns: (1fr);
+    grid-template-areas:
+      "MENU"
+      " LI " 
+      " RI ";
+  }
+}
+
+.catalog-image-block {
+  @include flex(column);
+  align-items: stretch;
+  height: 440px;
+  min-width: 200px;
+  &.left {
+    grid-area: LI;
+    justify-content: flex-start;
+  }
+  &.right {
+    grid-area: RI;
+    justify-content: flex-end;
+
+  }
+
+  @include breakpoint($bp1360) {
+    &.right {
+      justify-content: flex-start;
+    }
+  }
+
+  @include breakpoint($bp460) {
+    height: 80vmin;
+  }
+}
+
+.catalog-image-holder {
+  @include flex(row);
+  position: relative;
+  animation-name: fadein, bubble;
+	animation-fill-mode: both;
+  animation-delay: 200ms;
+	animation-duration: 600ms;
+  align-items: stretch;
+  height: 80vmin;
+}
+
+.catalog-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  @each $cat in $catnames {
+    &[data-menu="#{$cat}"] {
+      &.first {
+        background-image: url("../assets/images/#{$cat}_1.jpg");
+        background-position: top;
+      }
+      &.second {
+        background-image: url("../assets/images/#{$cat}_2.jpg");
+        background-position: bottom;
+      }
+    }
+  }
+}
+
+.catalog-text-block {
+  @include flex(column);
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  grid-area: MENU;
+}
+
+.catalog-menu-block {
+  @include flex(row);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.catalog-menu-item {
+  font-size: 38px;
+  line-height: 150%;
+  font-weight: 300;
+  color: $primary;
+  text-decoration: none;
+  text-underline-offset: 10px;
+
+  &.active {
+    color: $secondary;
+    text-decoration: underline;
+  }
+
+  &:not(:first-child) {
+    &:before {
+      content: "/";
+      color: $gray;
+      display: inline-block;
+      padding: 0px 10px;
+    }
   }
 }

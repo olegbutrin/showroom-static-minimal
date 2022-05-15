@@ -5,12 +5,16 @@ $section: 85px;
 $primary: #000000;
 $secondary: #7e143c;
 
+$gray: #c1c1c1;
 $dark: #0b1f3c;
 $darkest: #040f1f;
 
 $bp1400: 1400px;
+$bp1360: 1360px;
 $bp860: 860px;
 $bp460: 460px;
+
+$catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom", "sofa";
 
 @mixin breakpoint ($width) {
   @media (max-width: $width) {
@@ -37,5 +41,15 @@ $bp460: 460px;
     filter: invert(.75);
     -webkit-filter: invert(.75);
   }
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bubble {
+  0% { top: 50%; }
+  100% { top: 0%; }
 }
 
