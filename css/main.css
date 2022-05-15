@@ -31,7 +31,8 @@ h6 {
   padding: 0; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
 
 .wrapper {
   max-width: 1400px;
@@ -149,11 +150,14 @@ a {
     grid-area: RL; }
 
 .nav-empty {
-  width: 100%; }
+  width: 100%;
+  padding-top: 40px;
+  font-size: 14px; }
   .nav-empty.left {
     grid-area: LE; }
   .nav-empty.right {
-    grid-area: RE; }
+    grid-area: RE;
+    text-align: right; }
 
 .catalog-group {
   display: grid;
@@ -459,3 +463,58 @@ a {
     background-image: url("../assets/images/sofa_1.jpg"); }
   .personal-film-item[data-menu="sofa"].second {
     background-image: url("../assets/images/sofa_2.jpg"); }
+
+.bottom-nav-wrapper {
+  width: 100%;
+  background-color: #040f1f;
+  padding: 160px 0; }
+
+.bottom-nav-content {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1400px; }
+  @media (max-width: 1600px) {
+    .bottom-nav-content {
+      max-width: calc(100vw - 200px);
+      padding: 0 100px; } }
+  .bottom-nav-content .nav-link {
+    color: white; }
+  .bottom-nav-content .nav-icon.phone {
+    background-image: url("../assets/icons/phone.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75); }
+  .bottom-nav-content .nav-icon.mail {
+    background-image: url("../assets/icons/mail.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75); }
+  .bottom-nav-content .nav-icon.location {
+    background-image: url("../assets/icons/location.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75); }
+  .bottom-nav-content .nav-icon.instagram {
+    background-image: url("../assets/icons/instagram.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75); }
+  .bottom-nav-content .nav-logo {
+    background-image: url("../assets/icons/logo.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75); }
+  .bottom-nav-content .nav-line {
+    background-color: white; }
+  .bottom-nav-content .nav-empty {
+    color: white; }

@@ -25,6 +25,7 @@ h6 {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .wrapper {
@@ -157,11 +158,14 @@ a {
 
 .nav-empty {
   width: 100%;
+  padding-top: 40px;
+  font-size: $nav;
   &.left {
     grid-area: LE;
   }
   &.right {
     grid-area: RE;
+    text-align: right;
   }
 }
 
@@ -427,5 +431,53 @@ a {
         background-image: url("../assets/images/#{$cat}_2.jpg");
       }
     }
+  }
+}
+
+.bottom-nav-wrapper {
+  width: 100%;
+  background-color: $darkest;
+  padding: 160px 0;
+}
+
+.bottom-nav-content {
+  width: 100%;
+  margin: 0 auto;
+  max-width: $bp1400;
+
+  @include breakpoint($bp1600) {
+    max-width: calc(100vw - 200px);
+    padding: 0 100px;
+  }
+
+  .nav-link {
+    color: white;
+  }
+
+  .nav-icon {
+    &.phone {
+      @include icon("phone.svg", true);
+    }
+    &.mail {
+      @include icon("mail.svg", true);
+    }
+    &.location {
+      @include icon("location.svg", true);
+    }
+    &.instagram {
+      @include icon("instagram.svg", true);
+    }
+  }
+  
+  .nav-logo {
+    @include icon("logo.svg", true);
+  }
+  
+  .nav-line {
+    background-color: white;
+  }
+
+  .nav-empty {
+    color: white;
   }
 }
