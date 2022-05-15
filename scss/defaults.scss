@@ -44,6 +44,21 @@ $catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom", "s
   }
 }
 
+@mixin button ($color, $background) {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  line-height: 40px;
+  font-weight: 400;
+  vertical-align: middle;
+  text-transform: uppercase;
+  padding: 0 50px;
+  border-radius: 100px;
+  cursor: pointer;
+  color: $color;
+  background-color: $background;
+}
+
 @keyframes fadein {
   0% { opacity: 0; }
   100% { opacity: 1; }

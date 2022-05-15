@@ -34,7 +34,6 @@ a {
   text-decoration: none; }
 
 .wrapper {
-  height: 100%;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
@@ -381,5 +380,82 @@ a {
     position: absolute;
     right: 0; }
 
+#personal {
+  padding: 0;
+  width: 100%; }
+
 .personal-list-wrapper {
-  background-color: #0b1f3c; }
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  background-color: #0b1f3c;
+  padding: 160px 0; }
+
+.personal-list-form {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 500px;
+  z-index: 10; }
+  .personal-list-form .section-header {
+    color: white; }
+  .personal-list-form .button {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    line-height: 40px;
+    font-weight: 400;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding: 0 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    align-self: flex-end; }
+
+.personal-film {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+.personal-film-item {
+  display: block;
+  width: 335px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4; }
+  .personal-film-item[data-menu="bed"].first {
+    background-image: url("../assets/images/bed_1.jpg"); }
+  .personal-film-item[data-menu="bed"].second {
+    background-image: url("../assets/images/bed_2.jpg"); }
+  .personal-film-item[data-menu="bedroom"].first {
+    background-image: url("../assets/images/bedroom_1.jpg"); }
+  .personal-film-item[data-menu="bedroom"].second {
+    background-image: url("../assets/images/bedroom_2.jpg"); }
+  .personal-film-item[data-menu="childroom"].first {
+    background-image: url("../assets/images/childroom_1.jpg"); }
+  .personal-film-item[data-menu="childroom"].second {
+    background-image: url("../assets/images/childroom_2.jpg"); }
+  .personal-film-item[data-menu="hallway"].first {
+    background-image: url("../assets/images/hallway_1.jpg"); }
+  .personal-film-item[data-menu="hallway"].second {
+    background-image: url("../assets/images/hallway_2.jpg"); }
+  .personal-film-item[data-menu="kitchen"].first {
+    background-image: url("../assets/images/kitchen_1.jpg"); }
+  .personal-film-item[data-menu="kitchen"].second {
+    background-image: url("../assets/images/kitchen_2.jpg"); }
+  .personal-film-item[data-menu="livingroom"].first {
+    background-image: url("../assets/images/livingroom_1.jpg"); }
+  .personal-film-item[data-menu="livingroom"].second {
+    background-image: url("../assets/images/livingroom_2.jpg"); }
+  .personal-film-item[data-menu="sofa"].first {
+    background-image: url("../assets/images/sofa_1.jpg"); }
+  .personal-film-item[data-menu="sofa"].second {
+    background-image: url("../assets/images/sofa_2.jpg"); }
