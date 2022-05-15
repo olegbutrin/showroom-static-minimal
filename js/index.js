@@ -1,4 +1,43 @@
 $(() => {
+  // cursor event
+  const cursorIn = () => {
+    $(".follower-circle").addClass("follower-scaled");
+  };
+
+  const cursorOut = () => {
+    $(".follower-circle").removeClass("follower-scaled");
+  };
+
+  const invertIn = () => {
+    $(".cursor, .follower").css({ "mix-blend-mode": "difference"});
+    $(".follower-circle").css({ "background-color": "#ffffff"});
+  };
+
+  const invertOut = () => {
+    $(".cursor, .follower").css({ "mix-blend-mode": "normal"});
+    $(".follower-circle").css({ "background-color": ""});
+  };
+
+  $(document).on("mousemove", (e) => {
+    $(".cursor, .follower").css({
+      transform: "translate3d(" + e.clientX + "px, " + e.clientY + "px, 0px)",
+    });
+  });
+
+  $(".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button").on(
+    "mouseenter",
+    cursorIn
+  );
+
+  $(".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button").on(
+    "mouseleave",
+    cursorOut
+  );
+
+  $(".personal-list-wrapper, .bottom-nav-wrapper").on("mouseenter", invertIn);
+
+  $(".personal-list-wrapper, .bottom-nav-wrapper").on("mouseleave", invertOut);
+
   // catalog menu callback
   $(".catalog-menu-item").on("click", (e) => {
     e.preventDefault();

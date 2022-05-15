@@ -11,6 +11,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Poppins", sans-serif;
+  cursor: none;
 }
 
 h1,
@@ -26,7 +27,36 @@ h6 {
 a {
   text-decoration: none;
   color: inherit;
+  cursor: none;
 }
+
+// CURSOR
+
+.follower {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  cursor: none;
+  z-index: 999998;
+}
+
+.follower-circle {
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: $cursor 1px solid;
+  transition: width 160ms ease-out, height 160ms ease-out;
+}
+
+.follower-scaled {
+  border: $secondary 1px solid;
+  width: 160px;
+  height: 160px;
+}
+
+// CONTENT
 
 .wrapper {
   max-width: $bp1400;
@@ -375,6 +405,32 @@ a {
 
 // COLLECTIONS
 
+.collections-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 80px;
+  grid-template-areas:
+    "HA HA EA EA"
+    "LS RS RS RS";
+
+  .section-header {
+    grid-area: HA;
+  }
+
+  @include breakpoint($bp860) {
+    grid-template-columns: (1fr);
+    grid-template-areas:
+      "HA"
+      "RS"
+      "LS";
+  }
+}
+
+.collections-slider-wrapper {
+  width: 100%;
+  padding: 40px 0;
+}
+
 // PERSONAL
 
 #personal {
@@ -468,11 +524,11 @@ a {
       @include icon("instagram.svg", true);
     }
   }
-  
+
   .nav-logo {
     @include icon("logo.svg", true);
   }
-  
+
   .nav-line {
     background-color: white;
   }

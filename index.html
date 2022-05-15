@@ -9,6 +9,12 @@
     <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
   </head>
   <body>
+    <div class="cursor-wrapper">
+      <div class="cursor"></div>
+      <div class="follower">
+        <div class="follower-circle"></div>
+      </div>
+    </div>
     <div class="wrapper">
       <main id="content">
         <div class="nav-group">
@@ -101,7 +107,9 @@
 
         <!-- COLLECTIONS -->
         <section id="collections" class="page collections">
-          <h2 class="section-header">Коллекции</h2>
+          <div class="collections-group">
+            <h2 class="section-header">Коллекции в центре внимания</h2>
+          </div>
         </section>
       </main>
     </div>
@@ -148,12 +156,13 @@
             <div class="nav-line left"></div>
             <div class="nav-line right"></div>
             <div class="nav-empty left">© Мир Мебели. Все права защищены.</div>
-            <div class="nav-empty right">The site is developed by <a href="Pumalabs.io">Pumalabs.io</a></div>
+            <div class="nav-empty right">
+              The site is developed by <a href="Pumalabs.io">Pumalabs.io</a>
+            </div>
           </div>
         </div>
       </div>
     </aside>
-
     <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
