@@ -36,6 +36,17 @@ a {
   color: inherit;
   cursor: none; }
 
+.cursor {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  cursor: none;
+  z-index: 91; }
+
+.cursor-text {
+  transform: translate(-50%, -14px); }
+
 .follower {
   position: fixed;
   top: 0px;
