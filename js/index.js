@@ -37,15 +37,13 @@ $(() => {
     });
   });
 
-  $(".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button, .collections-slider-wrapper").on(
-    "mouseenter",
-    cursorIn
-  );
+  $(
+    ".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button, .collections-slider-wrapper"
+  ).on("mouseenter", cursorIn);
 
-  $(".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button, .collections-slider-wrapper").on(
-    "mouseleave",
-    cursorOut
-  );
+  $(
+    ".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button, .collections-slider-wrapper"
+  ).on("mouseleave", cursorOut);
 
   $(".button").on("mouseenter", buttonIn);
 
@@ -57,12 +55,44 @@ $(() => {
 
   // slider cursor
 
-  $(".collections-slider-wrapper").on("mouseenter", () => {
+  let carouselID;
+
+  const bigItem = {"width": "690px", "height": "550px"};
+  const smallItem = {"width": "275px", "height": "275px"}
+  const moveLeft = {"left": "-=740px"}
+
+  $(".collections-film-item").first().css(bigItem);
+
+  $(".collections-slider-wrapper").on("mousemove", (e) => {
+    const bounds = e.currentTarget.getBoundingClientRect();
+    const center = bounds.x + bounds.width / 2;
+    carouselStep = e.clientX <= center ? -1 : 1;
+    console.log(carouselStep);
+  });
+
+  $(".collections-slider-wrapper").on("mouseenter", (e) => {
     $(".cursor-text").text("Тащить");
   });
 
-  $(".collections-slider-wrapper").on("mouseleave", () => {
+  $(".collections-slider-wrapper").on("mouseleave", (e) => {
     $(".cursor-text").text("");
+  });
+
+  $(".collections-film-item").on("mouseenter", (e)=>{
+    const $item = $(e.target);
+    $item.animate(bigItem, 630);
+    $(".collections-film-item").not($item).animate(smallItem, 630);
+    carouselID = setTimeout(()=>{
+
+      $(".collections-film-item").first().appendTo($(".collections-film-item").first().parent());
+      $(".collections-film-item").first().animate(bigItem, 630);
+    }, 800)
+  })
+
+  $(".collections-film-item").on("mouseleave", (e)=>{
+    if (carouselID) {
+      clearTimeout(carouselID);
+    }
   });
 
   // catalog menu callback

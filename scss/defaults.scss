@@ -19,36 +19,37 @@ $bp1360: 1360px;
 $bp860: 860px;
 $bp460: 460px;
 
-$catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom", "sofa";
+$catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom",
+  "sofa";
 
-@mixin breakpoint ($width) {
+@mixin breakpoint($width) {
   @media (max-width: $width) {
     @content;
   }
 }
 
-@mixin flex ($direction) {
+@mixin flex($direction) {
   display: flex;
   flex-direction: $direction;
 }
 
-@mixin transition ($duraton) {
+@mixin transition($duraton) {
   transition: top $duraton;
   -webkit-transition: $duraton;
 }
 
-@mixin icon ($svg, $invert) {
+@mixin icon($svg, $invert) {
   background-image: url("../assets/icons/" + $svg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   @if $invert {
-    filter: invert(.75);
-    -webkit-filter: invert(.75);
+    filter: invert(0.75);
+    -webkit-filter: invert(0.75);
   }
 }
 
-@mixin button ($color, $background) {
+@mixin button($color, $background) {
   display: block;
   font-family: "Poppins", sans-serif;
   font-size: 10px;
@@ -64,12 +65,47 @@ $catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom", "s
 }
 
 @keyframes fadein {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes bubble {
-  0% { top: 50%; }
-  100% { top: 0%; }
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 0%;
+  }
 }
 
+@keyframes tobig {
+  0% {
+    height: 275px;
+    width: 275px;
+  }
+  100% {
+    height: 550px;
+    width: 690px;
+  }
+}
+
+@keyframes tosmall {
+  0% {
+    height: 550px;
+    width: 690px;
+  }
+  100% {
+    height: 275px;
+    width: 275px;
+  }
+}
+
+@keyframes move2left {
+  100% {
+    transform: translate(-740px);
+  }
+}
