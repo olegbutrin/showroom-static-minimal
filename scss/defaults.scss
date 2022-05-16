@@ -1,6 +1,7 @@
 $main: 15px;
 $nav: 14px;
 $menu: 25px;
+$collections: 28px;
 $section: 85px;
 
 $primary: #000000;
@@ -57,9 +58,9 @@ $catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom", "s
   text-transform: uppercase;
   padding: 0 50px;
   border-radius: 100px;
-  cursor: pointer;
   color: $color;
   background-color: $background;
+  z-index: 100;
 }
 
 @keyframes fadein {

@@ -9,14 +9,27 @@ $(() => {
   };
 
   const invertIn = () => {
-    $(".cursor, .follower").css({ "mix-blend-mode": "difference"});
+    $(".follower").css({ "mix-blend-mode": "difference"});
     $(".follower-circle").css({ "background-color": "#ffffff"});
   };
 
   const invertOut = () => {
-    $(".cursor, .follower").css({ "mix-blend-mode": "normal"});
+    $(".follower").css({ "mix-blend-mode": "normal"});
     $(".follower-circle").css({ "background-color": ""});
   };
+
+  const buttonIn = (e) => {
+    const color = $(e.target).css("background-color");
+    $(".follower").css({ "mix-blend-mode": "lighten"});
+    $(".follower-circle").css({ "background-color": color});
+  }
+
+  const buttonOut = (e) => {
+    const blend = $(e.target).hasClass("invert") ? "difference" : "normal";
+    const color = $(e.target).hasClass("invert") ? "#ffffff" : "";
+    $(".follower").css({ "mix-blend-mode": blend});
+    $(".follower-circle").css({ "background-color": color});
+  }
 
   $(document).on("mousemove", (e) => {
     $(".cursor, .follower").css({
@@ -32,6 +45,16 @@ $(() => {
   $(".nav-link, .nav-icon, .catalog-menu-item, .styles-menu-item, .button").on(
     "mouseleave",
     cursorOut
+  );
+
+  $(".button").on(
+    "mouseenter",
+    buttonIn
+  );
+
+  $(".button").on(
+    "mouseleave",
+    buttonOut
   );
 
   $(".personal-list-wrapper, .bottom-nav-wrapper").on("mouseenter", invertIn);

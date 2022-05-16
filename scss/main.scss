@@ -38,7 +38,7 @@ a {
   left: 0px;
   pointer-events: none;
   cursor: none;
-  z-index: 999998;
+  z-index: 90;
 }
 
 .follower-circle {
@@ -62,6 +62,7 @@ a {
   max-width: $bp1400;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 220px;
   padding-left: 100px;
   padding-right: 100px;
 
@@ -427,8 +428,84 @@ a {
 }
 
 .collections-slider-wrapper {
+  height: 550px;
+  padding: 0;
+  position: relative;
+  grid-area: RS;
+  overflow: hidden;
+}
+
+.collections-slider-container {
+  @include flex(row);
+  gap: 80px;
+  align-items: flex-end;
+  position: absolute;
+}
+
+.collections-film-item {
+  display: block;
+  width: 275px;
+  height: 275px;
+  max-width: 100%;
+  max-height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &.big {
+    width: 690px;
+    height: 550px;
+  }
+
+  @each $cat in $catnames {
+    &[data-menu="#{$cat}"] {
+      &.first {
+        background-image: url("../assets/images/#{$cat}_1.jpg");
+      }
+      &.second {
+        background-image: url("../assets/images/#{$cat}_2.jpg");
+      }
+    }
+  }
+}
+
+.collections-text-wrapper {
   width: 100%;
-  padding: 40px 0;
+  height: 350px;
+  position: relative;
+  grid-area: LS;
+}
+
+.collections-text-container {
+  @include flex(column);
+  position: absolute;
+  height: 100%;
+  padding-right: 40px;
+}
+
+.collections-text-item {
+  @include flex(column);
+  align-items: flex-start;
+  gap: 40px;
+  height: 100%;
+}
+
+.collections-text-header {
+  font-family: "Cormorant Garamond", serif;
+  font-size: $collections;
+  line-height: 120%;
+  font-style: italic;
+}
+
+.collections-text-body {
+  font-size: $main;
+  &:last-child {
+    padding: 40px;
+  }
+}
+
+.collections.text.button {
+  @include button(white, $secondary);
 }
 
 // PERSONAL
@@ -444,16 +521,17 @@ a {
   align-items: center;
   background-color: $dark;
   padding: 160px 0;
+  overflow: hidden;
 }
 
 .personal-list-form {
   @include flex(column);
   gap: 80px;
   width: 500px;
-  z-index: 10;
 
   .section-header {
     color: white;
+    z-index: 80;
   }
 
   .button {
@@ -468,6 +546,7 @@ a {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+
 }
 
 .personal-film-item {
@@ -477,7 +556,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.4;
+  opacity: 0.7;
   @each $cat in $catnames {
     &[data-menu="#{$cat}"] {
       &.first {
