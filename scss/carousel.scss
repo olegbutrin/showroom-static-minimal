@@ -4,9 +4,61 @@ $crslBigH: 550px;
 $crslGap: 40px;
 $crslSpeed: 1800ms;
 
+// $crslSmallW + $crslGap;
+$block: 315px;
+// 100% - $block
+$diff: calc(100% - 315px);
+// 100% - $gap
+$post: calc(100% + 40px);
+// 100% - $crslSmallW
+$wide: calc(100% - 275px);
+
+@mixin carousel($name) {
+  animation-name: $name;
+  animation-fill-mode: forwards;
+  animation-duration: $crslSpeed;
+}
+
+@mixin carouselBackground {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+}
+
+@mixin smallBlock {
+  height: $crslSmallH;
+  width: $crslSmallW;
+}
+
+@mixin largeBlock {
+  height: $crslBigH;
+  width: $diff;
+}
+
+@mixin leftSmallBlock {
+  right: 0px;
+  @include smallBlock;
+}
+
+@mixin leftLargeBlock {
+  right: $block;
+  @include largeBlock;
+}
+
+@mixin rightSmallBlock {
+  left: 0px;
+  @include smallBlock;
+}
+
+@mixin rightLargeBlock {
+  left: $block;
+  @include largeBlock;
+}
+
 @keyframes leftPreVisible {
   0% {
-    right: -315px;
+    right: -$block;
   }
   100% {
     right: 0px;
@@ -15,58 +67,45 @@ $crslSpeed: 1800ms;
 
 @keyframes leftVisible {
   0% {
-    right: 0px;
-    height: 275px;
-    width: 275px;
+    @include leftSmallBlock;
   }
   100% {
-    right: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include leftLargeBlock;
   }
 }
 
 @keyframes leftPostVisible {
   0% {
-    right: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include leftLargeBlock;
   }
   100% {
-    right: calc(100% + 40px);
+    right: $post;
   }
 }
 
 @keyframes leftSwapPrevisible {
   0% {
-    right: 0px;
-    height: 275px;
-    width: 275px;
+    @include leftSmallBlock;
   }
   100% {
     right: 0px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include largeBlock;
   }
 }
 
 @keyframes leftSwapVisible {
   0% {
-    right: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include leftLargeBlock;
   }
   100% {
-    right: calc(100% - 275px);
-    height: 275px;
-    width: 275px;
+    right: $wide;
+    @include smallBlock;
   }
 }
 
-
 @keyframes rightPreVisible {
   0% {
-    left: -315px;
+    left: -$block;
   }
   100% {
     left: 0px;
@@ -75,51 +114,38 @@ $crslSpeed: 1800ms;
 
 @keyframes rightVisible {
   0% {
-    left: 0px;
-    height: 275px;
-    width: 275px;
+    @include rightSmallBlock;
   }
   100% {
-    left: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include rightLargeBlock;
   }
 }
 
 @keyframes rightPostVisible {
   0% {
-    left: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include rightLargeBlock;
   }
   100% {
-    left: calc(100% + 40px);
+    left: $post;
   }
 }
 
-
 @keyframes rightSwapPrevisible {
   0% {
-    left: 0px;
-    height: 275px;
-    width: 275px;
+    @include rightSmallBlock;
   }
   100% {
     left: 0px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include largeBlock;
   }
 }
 
 @keyframes rightSwapVisible {
   0% {
-    left: 315px;
-    height: 550px;
-    width: calc(100% - 315px);
+    @include rightLargeBlock;
   }
   100% {
-    left: calc(100% - 275px);
-    height: 275px;
-    width: 275px;
+    left: $wide;
+    @include smallBlock;
   }
 }

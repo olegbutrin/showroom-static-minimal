@@ -458,43 +458,30 @@ a {
   &.left {
     .collections-slider-item {
       display: inline-block;
-      width: 275px;
-      height: 275px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      position: absolute;
+      width: $crslSmallW;
+      height: $crslSmallH;
       bottom: 0px;
-      right: -275px;
+      right: -$block;
+      @include carouselBackground;
 
       &.previsible {
-        animation-name: leftPreVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(leftPreVisible);
       }
 
       &.visible {
-        animation-name: leftVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(leftVisible);
       }
 
       &.postvisible {
-        animation-name: leftPostVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(leftPostVisible);
       }
 
       &.swapprevisible {
-        animation-name: leftSwapPrevisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(leftSwapPrevisible);
       }
 
       &.swapvisible {
-        animation-name: leftSwapVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(leftSwapVisible);
       }
 
       @each $cat in $catnames {
@@ -513,43 +500,30 @@ a {
   &.right {
     .collections-slider-item {
       display: inline-block;
-      width: 275px;
-      height: 275px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      position: absolute;
+      width: $crslSmallW;
+      height: $crslSmallH;
       bottom: 0px;
-      left: -275px;
+      left: -$block;
+      @include carouselBackground;
 
       &.previsible {
-        animation-name: rightPreVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(rightPreVisible);
       }
 
       &.visible {
-        animation-name: rightVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(rightVisible);
       }
 
       &.postvisible {
-        animation-name: rightPostVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(rightPostVisible);
       }
 
       &.swapprevisible {
-        animation-name: rightSwapPrevisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(rightSwapPrevisible);
       }
 
       &.swapvisible {
-        animation-name: rightSwapVisible;
-        animation-fill-mode: forwards;
-        animation-duration: 1800ms;
+        @include carousel(rightSwapVisible);
       }
 
       @each $cat in $catnames {

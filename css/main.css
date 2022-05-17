@@ -535,12 +535,12 @@ a {
     display: inline-block;
     width: 275px;
     height: 275px;
+    bottom: 0px;
+    right: -315px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    position: absolute;
-    bottom: 0px;
-    right: -275px; }
+    position: absolute; }
     .collections-slider-container.left .collections-slider-item.previsible {
       animation-name: leftPreVisible;
       animation-fill-mode: forwards;
@@ -593,12 +593,12 @@ a {
     display: inline-block;
     width: 275px;
     height: 275px;
+    bottom: 0px;
+    left: -315px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    position: absolute;
-    bottom: 0px;
-    left: -275px; }
+    position: absolute; }
     .collections-slider-container.right .collections-slider-item.previsible {
       animation-name: rightPreVisible;
       animation-fill-mode: forwards;
