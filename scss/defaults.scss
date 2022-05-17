@@ -81,3 +81,31 @@ $catnames: "bed", "bedroom", "childroom", "hallway", "kitchen", "livingroom",
     top: 0%;
   }
 }
+
+@keyframes slidedown {
+  0% {
+    top: -100%
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes slidehide {
+  0% {
+    top: 0%;
+    opacity: 1;
+  }
+  80% {
+    top: 80%;
+    opacity: 0;
+  }
+  90% {
+    top: -100%;
+    opacity: 0;
+  }
+  100% {
+    top: -100%;
+    opacity: 1;
+  }
+}

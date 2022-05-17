@@ -444,7 +444,7 @@ a {
 }
 
 .collections-slider-wrapper {
-  height: 550px;
+  height: $crslBigH;
   padding: 0;
   grid-area: RS;
   overflow: hidden;
@@ -544,12 +544,13 @@ a {
   width: 100%;
   height: 350px;
   position: relative;
+  overflow: hidden;
   grid-area: LS;
 }
 
 .collections-text-container {
   @include flex(column);
-  position: absolute;
+  position: relative;
   height: 100%;
   padding-right: 40px;
 }
@@ -559,6 +560,20 @@ a {
   align-items: flex-start;
   gap: 40px;
   height: 100%;
+  position: absolute;
+  top: -100%;
+
+  &.show {
+    animation-name: slidedown;
+    animation-fill-mode: forwards;
+    animation-duration: $crslSpeed;
+  }
+
+  &.hide {
+    animation-name: slidehide;
+    animation-fill-mode: forwards;
+    animation-duration: $crslSpeed;
+  }
 }
 
 .collections-text-header {
