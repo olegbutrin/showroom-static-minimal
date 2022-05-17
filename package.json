@@ -1,7 +1,7 @@
 {
   "name": "showroom-static-minimal",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "license": "MIT",
   "scripts": {
     "scss": "node-sass -w scss/main.scss -o css/"
