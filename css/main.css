@@ -88,15 +88,15 @@
   100% {
     left: 0px;
     height: 550px;
-    width: calc(100% - 275px); } }
+    width: calc(100% - 315px); } }
 
 @keyframes rightSwapVisible {
   0% {
-    left: 275px;
+    left: 315px;
     height: 550px;
     width: calc(100% - 315px); }
   100% {
-    left: calc(100% - 315px);
+    left: calc(100% - 275px);
     height: 275px;
     width: 275px; } }
 

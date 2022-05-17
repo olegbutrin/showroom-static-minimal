@@ -1,0 +1,125 @@
+$crslSmallW: 275px;
+$crslSmallH: 275px;
+$crslBigH: 550px;
+$crslGap: 40px;
+$crslSpeed: 1800ms;
+
+@keyframes leftPreVisible {
+  0% {
+    right: -315px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+
+@keyframes leftVisible {
+  0% {
+    right: 0px;
+    height: 275px;
+    width: 275px;
+  }
+  100% {
+    right: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+}
+
+@keyframes leftPostVisible {
+  0% {
+    right: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+  100% {
+    right: calc(100% + 40px);
+  }
+}
+
+@keyframes leftSwapPrevisible {
+  0% {
+    right: 0px;
+    height: 275px;
+    width: 275px;
+  }
+  100% {
+    right: 0px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+}
+
+@keyframes leftSwapVisible {
+  0% {
+    right: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+  100% {
+    right: calc(100% - 275px);
+    height: 275px;
+    width: 275px;
+  }
+}
+
+
+@keyframes rightPreVisible {
+  0% {
+    left: -315px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+@keyframes rightVisible {
+  0% {
+    left: 0px;
+    height: 275px;
+    width: 275px;
+  }
+  100% {
+    left: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+}
+
+@keyframes rightPostVisible {
+  0% {
+    left: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+  100% {
+    left: calc(100% + 40px);
+  }
+}
+
+
+@keyframes rightSwapPrevisible {
+  0% {
+    left: 0px;
+    height: 275px;
+    width: 275px;
+  }
+  100% {
+    left: 0px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+}
+
+@keyframes rightSwapVisible {
+  0% {
+    left: 315px;
+    height: 550px;
+    width: calc(100% - 315px);
+  }
+  100% {
+    left: calc(100% - 275px);
+    height: 275px;
+    width: 275px;
+  }
+}

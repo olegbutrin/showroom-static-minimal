@@ -92,7 +92,7 @@ $(() => {
           setTimeout(() => {
             $container.removeClass("right").addClass("left");
             $postvisible.removeClass("postvisible").removeAttr("style");
-            if ($visible.next().length) {
+            if ($visible.next().length !== 0) {
               $visible.next().removeAttr("style").addClass("previsible")
             } else {
               $first.removeAttr("style").addClass("previsible")
@@ -123,7 +123,7 @@ $(() => {
           setTimeout(() => {
             $container.removeClass("left").addClass("right");
             $postvisible.removeClass("postvisible").removeAttr("style");
-            if ($visible.prev().length) {
+            if ($visible.prev().length !== 0) {
               $visible.prev().removeAttr("style").addClass("previsible")
             } else {
               $last.removeAttr("style").addClass("previsible")
