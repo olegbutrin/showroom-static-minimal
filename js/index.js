@@ -53,46 +53,104 @@ $(() => {
 
   $(".personal-list-wrapper, .bottom-nav-wrapper").on("mouseleave", invertOut);
 
-  // slider cursor
+  // slider + cursor
 
   let carouselID;
+  let carouselStep = 0;
 
-  const bigItem = {"width": "690px", "height": "550px"};
-  const smallItem = {"width": "275px", "height": "275px"}
-  const moveLeft = {"left": "-=740px"}
-
-  $(".collections-film-item").first().css(bigItem);
+  $(".collections-slider-container").addClass("left");
+  $(".collections-slider-item").first().addClass("visible");
+  $(".collections-slider-item").first().next().addClass("previsible");
 
   $(".collections-slider-wrapper").on("mousemove", (e) => {
     const bounds = e.currentTarget.getBoundingClientRect();
-    const center = bounds.x + bounds.width / 2;
-    carouselStep = e.clientX <= center ? -1 : 1;
-    console.log(carouselStep);
+    const left = [bounds.x, bounds.x + bounds.width / 4];
+    const right = [bounds.x + (bounds.width / 4) * 3, bounds.x + bounds.width];
+    if (e.clientX > left[0] && e.clientX < left[1]) {
+      carouselStep = -1;
+    } else if (e.clientX > right[0] && e.clientX < right[1]) {
+      carouselStep = 1;
+    } else {
+      carouselStep = 0;
+    }
   });
 
   $(".collections-slider-wrapper").on("mouseenter", (e) => {
     $(".cursor-text").text("Тащить");
+    carouselID = setInterval(() => {
+      const $container = $(".collections-slider-container");
+      const $postvisible = $(".collections-slider-item.postvisible");
+      const $visible = $(".collections-slider-item.visible");
+      const $previsible = $(".collections-slider-item.previsible");
+      const $first = $(".collections-slider-item").first();
+      const $last = $(".collections-slider-item").last();
+      // left
+      if (carouselStep === -1) {
+        if ($container.hasClass("right")) {
+          $visible.removeClass("visible").removeAttr("style").addClass("swapvisible");
+          $previsible.removeClass("previsible").removeAttr("style").addClass("swapprevisible");
+          setTimeout(() => {
+            $container.removeClass("right").addClass("left");
+            $postvisible.removeClass("postvisible").removeAttr("style");
+            if ($visible.next().length) {
+              $visible.next().removeAttr("style").addClass("previsible")
+            } else {
+              $first.removeAttr("style").addClass("previsible")
+            }
+            $visible.removeClass("swapvisible").removeAttr("style").addClass("visible");
+            $previsible.removeClass("swapprevisible").removeAttr("style").addClass("postvisible");
+          }, 2000);
+        } else {
+          const $next = $previsible.next().length ? $previsible.next() : $first;
+          $postvisible.removeClass("postvisible").removeAttr("style");
+          $visible
+            .removeClass("visible")
+            .removeAttr("style")
+            .addClass("postvisible");
+          $previsible
+            .removeClass("previsible")
+            .removeAttr("style")
+            .addClass("visible");
+          $next.removeAttr("style").addClass("previsible");
+        }
+      }
+      // right
+      if (carouselStep === 1) {
+        // switch to right
+        if ($container.hasClass("left")) {
+          $visible.removeClass("visible").removeAttr("style").addClass("swapvisible");
+          $previsible.removeClass("previsible").removeAttr("style").addClass("swapprevisible");
+          setTimeout(() => {
+            $container.removeClass("left").addClass("right");
+            $postvisible.removeClass("postvisible").removeAttr("style");
+            if ($visible.prev().length) {
+              $visible.prev().removeAttr("style").addClass("previsible")
+            } else {
+              $last.removeAttr("style").addClass("previsible")
+            }
+            $visible.removeClass("swapvisible").removeAttr("style").addClass("visible");
+            $previsible.removeClass("swapprevisible").removeAttr("style").addClass("postvisible");
+          }, 2000);
+        } else {
+          const $next = $previsible.prev().length ? $previsible.prev() : $last;
+          $postvisible.removeClass("postvisible").removeAttr("style");
+          $visible
+            .removeClass("visible")
+            .removeAttr("style")
+            .addClass("postvisible");
+          $previsible
+            .removeClass("previsible")
+            .removeAttr("style")
+            .addClass("visible");
+          $next.removeAttr("style").addClass("previsible");
+        }
+      }
+    }, 2000);
   });
 
   $(".collections-slider-wrapper").on("mouseleave", (e) => {
     $(".cursor-text").text("");
-  });
-
-  $(".collections-film-item").on("mouseenter", (e)=>{
-    const $item = $(e.target);
-    $item.animate(bigItem, 630);
-    $(".collections-film-item").not($item).animate(smallItem, 630);
-    carouselID = setTimeout(()=>{
-
-      $(".collections-film-item").first().appendTo($(".collections-film-item").first().parent());
-      $(".collections-film-item").first().animate(bigItem, 630);
-    }, 800)
-  })
-
-  $(".collections-film-item").on("mouseleave", (e)=>{
-    if (carouselID) {
-      clearTimeout(carouselID);
-    }
+    clearInterval(carouselID);
   });
 
   // catalog menu callback

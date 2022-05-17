@@ -450,40 +450,116 @@ a {
 }
 
 .collections-slider-container {
-  @include flex(row);
-  gap: 80px;
   height: 100%;
-  width: max-content;
-  overflow: hidden;
-  align-items: flex-end;
-
-}
-
-.collections-film-item {
-  display: block;
-  width: 275px;
-  height: 275px;
-  max-width: 100%;
-  max-height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
   position: relative;
 
+  &.left {
+    .collections-slider-item {
+      display: inline-block;
+      width: 275px;
+      height: 275px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      bottom: 0px;
+      right: -275px;
 
-  &.big {
-    width: 690px;
-    height: 550px;
+      &.previsible {
+        animation-name: leftPreVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
 
+      &.visible {
+        animation-name: leftVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.postvisible {
+        animation-name: leftPostVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.swapprevisible {
+        animation-name: leftSwapPrevisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.swapvisible {
+        animation-name: leftSwapVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      @each $cat in $catnames {
+        &[data-menu="#{$cat}"] {
+          &.first {
+            background-image: url("../assets/images/#{$cat}_1.jpg");
+          }
+          &.second {
+            background-image: url("../assets/images/#{$cat}_2.jpg");
+          }
+        }
+      }
+    }
   }
 
-  @each $cat in $catnames {
-    &[data-menu="#{$cat}"] {
-      &.first {
-        background-image: url("../assets/images/#{$cat}_1.jpg");
+  &.right {
+    .collections-slider-item {
+      display: inline-block;
+      width: 275px;
+      height: 275px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      bottom: 0px;
+      left: -275px;
+
+      &.previsible {
+        animation-name: rightPreVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
       }
-      &.second {
-        background-image: url("../assets/images/#{$cat}_2.jpg");
+
+      &.visible {
+        animation-name: rightVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.postvisible {
+        animation-name: rightPostVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.swapprevisible {
+        animation-name: rightSwapPrevisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      &.swapvisible {
+        animation-name: rightSwapVisible;
+        animation-fill-mode: forwards;
+        animation-duration: 1800ms;
+      }
+
+      @each $cat in $catnames {
+        &[data-menu="#{$cat}"] {
+          &.first {
+            background-image: url("../assets/images/#{$cat}_1.jpg");
+          }
+          &.second {
+            background-image: url("../assets/images/#{$cat}_2.jpg");
+          }
+        }
       }
     }
   }
